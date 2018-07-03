@@ -13,7 +13,7 @@ namespace MyLibraryProject.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AllTheBooks()
         {
             ViewBag.Message = "Your application description page.";
 
