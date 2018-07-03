@@ -1,0 +1,2 @@
+# MyLibraryProject
+Project for Class
