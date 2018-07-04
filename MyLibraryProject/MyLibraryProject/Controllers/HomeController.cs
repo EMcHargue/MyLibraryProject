@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyLibraryProject.Models;
+using MyLibraryProject.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,8 @@ namespace MyLibraryProject.Controllers
 {
     public class HomeController : Controller
     {
+        BooksContext booksContext = new BooksContext();
+
         public ActionResult Index()
         {
             return View();
@@ -15,9 +19,14 @@ namespace MyLibraryProject.Controllers
 
         public ActionResult AllTheBooks()
         {
-            ViewBag.Message = "Your application description page.";
+            List<Book> AllOfTheBooks = new List<Book>();
 
-            return View();
+            foreach (Book book in booksContext.Books)
+            {
+                AllOfTheBooks.Add(book);
+            }
+
+            return View(AllOfTheBooks);
         }
 
         public ActionResult Contact()

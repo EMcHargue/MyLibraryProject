@@ -1,7 +1,14 @@
-﻿@{
+﻿@model System.Collections.Generic.List<MyLibraryProject.Models.Book>
+
+@{
     ViewBag.Title = "AllTheBooks";
 }
 <h2>Currently in My Library:</h2>
-<h3></h3>
 
-<p></p>
+@for(var i = 0; i < Model.Count; i++)
+{
+    <h3>@Model[i].Title</h3>
+    <p>@Model[i].Author</p>
+    <p>Book on Shelf: @Model[i].OnShelf</p>
+}
+
