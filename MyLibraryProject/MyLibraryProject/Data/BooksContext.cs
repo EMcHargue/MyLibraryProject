@@ -13,18 +13,25 @@ namespace MyLibraryProject.Data
 
         public BooksContext()
         {
-            SeedData();
+            Database.SetInitializer(new DatabaseInitializer());
         }
 
-        public void SeedData()
+        static BooksContext GetContext()
         {
-            if (Books.Count() <= 0)
+            var context = new BooksContext();
+//            context.Database.Log = (message) => Debug.WriteLine(message);
+            return context;
+        }
+
+        public Book GetBook(int BookId)
+        {
+            using (BooksContext context = GetContext())
             {
-                Books.Add(new Book { Title = "Dune", Author = "Frank Herbert", OnShelf = true });
-                Books.Add(new Book { Title = "Pride and Prejudice", Author = "Jane Austen", OnShelf = true });
-                Books.Add(new Book { Title = "The Other Boleyn Girl", Author = "Philippa Gregory", OnShelf = false });
-                SaveChanges();
+                return context.Books
+                    .Where(b => b.Id == BookId)
+                    .SingleOrDefault();
             }
         }
+
     }
 }

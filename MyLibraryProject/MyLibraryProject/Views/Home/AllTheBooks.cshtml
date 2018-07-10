@@ -5,10 +5,11 @@
 }
 <h2>Currently in My Library:</h2>
 
-@for(var i = 0; i < Model.Count; i++)
+@for (var i = 0; i < Model.Count; i++)
 {
-    <h3>@Model[i].Title</h3>
-    <p>@Model[i].Author</p>
-    <p>Book on Shelf: @Model[i].OnShelf</p>
-}
+    <h3> @Html.ActionLink(Model[i].Title, "BookDetail", new { BookId = Model[i].Id } ) </h3>
+        <p>@Model[i].Author</p>
+        <p>Book on Shelf: @Model[i].OnShelf</p>
+        <p>ID : @Model[i].Id</p>
+        }
 

@@ -29,11 +29,19 @@ namespace MyLibraryProject.Controllers
             return View(AllOfTheBooks);
         }
 
-        public ActionResult Contact()
+        public ActionResult BookDetail(int? BookId)
         {
-            ViewBag.Message = "Your contact page.";
+            if (BookId == null)
+            {
+              return HttpNotFound();
+            }
 
-            return View();
+            // Selects the book based on Book.Id
+            
+            var book = booksContext.GetBook((int)BookId);
+
+            return View(book);
+
         }
     }
 }
