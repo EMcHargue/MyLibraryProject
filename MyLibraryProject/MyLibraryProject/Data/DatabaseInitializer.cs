@@ -7,7 +7,7 @@ using System.Web;
 
 namespace MyLibraryProject.Data
 {
-    internal class DatabaseInitializer : DropCreateDatabaseIfModelChanges<BooksContext>
+    internal class DatabaseInitializer : DropCreateDatabaseAlways<BooksContext>
     {
         protected override void Seed(BooksContext context)
         {

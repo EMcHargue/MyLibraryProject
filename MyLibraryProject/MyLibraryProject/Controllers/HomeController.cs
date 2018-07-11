@@ -43,5 +43,26 @@ namespace MyLibraryProject.Controllers
             return View(book);
 
         }
+
+        public ActionResult Add()
+        {
+            var newBook = new Book();
+
+            return View(newBook);
+        }
+
+        [HttpPost]
+        public ActionResult Add(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                booksContext.Books.Add(book);
+                booksContext.SaveChanges();
+
+                return RedirectToAction("AllTheBooks");
+            }
+
+            return View(book);
+        }
     }
 }
