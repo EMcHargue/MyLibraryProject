@@ -16,7 +16,14 @@ namespace MyLibraryProject.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            List<Book> AllOfTheBooks = new List<Book>();
+
+            foreach (Book book in booksContext.Books)
+            {
+                AllOfTheBooks.Add(book);
+            }
+
+            return View(AllOfTheBooks);
         }
 
         public ActionResult AllTheBooks()

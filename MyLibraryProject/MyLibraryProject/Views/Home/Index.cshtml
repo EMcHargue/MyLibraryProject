@@ -1,17 +1,23 @@
-﻿@{
+﻿@model System.Collections.Generic.List<MyLibraryProject.Models.Book>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron" style="background-image: url(../../Images/Books.jpg); background-size: cover; color: ghostwhite">
     <h1><strong>My Library</strong></h1>
-    
+
 </div>
 
 <div class="row">
     <div class="col-md-8">
         <h2>Most Recent Book</h2>
+        <h3>
+            @Html.ActionLink(Model.OrderByDescending(i => i.Id).First().Title, "BookDetail", new { BookId = Model.OrderByDescending(i => i.Id).First().Id })
+
+        </h3>
         <p>
-            Stuff
+            @Model.OrderByDescending(i => i.Id).First().Author
         </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>

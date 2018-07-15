@@ -32,5 +32,13 @@ namespace MyLibraryProject.Data
                     .SingleOrDefault();
             }
         }
+
+        public Book GetNewest()
+        {
+            using (BooksContext context = GetContext())
+            {
+                return context.Books.OrderByDescending(i => i.Id).First();
+            }
+        }
     }
 }
