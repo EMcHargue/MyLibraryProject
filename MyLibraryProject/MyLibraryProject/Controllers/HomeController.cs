@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace MyLibraryProject.Controllers
 {
@@ -63,6 +64,29 @@ namespace MyLibraryProject.Controllers
             }
 
             return View(book);
+        }
+
+        public ActionResult Delete(int? bookId)
+        {
+            if (bookId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Book book = booksContext.Books.Find(bookId);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int bookId)
+        {
+            Book book = booksContext.Books.Find(bookId);
+            booksContext.Books.Remove(book);
+            booksContext.SaveChanges();
+            return RedirectToAction("AllTheBooks");
         }
     }
 }
