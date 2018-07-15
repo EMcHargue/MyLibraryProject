@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+using System.Data.Entity;
 
 namespace MyLibraryProject.Controllers
 {
@@ -87,6 +88,32 @@ namespace MyLibraryProject.Controllers
             booksContext.Books.Remove(book);
             booksContext.SaveChanges();
             return RedirectToAction("AllTheBooks");
+        }
+
+        public ActionResult Edit(int? bookId)
+        {
+            if (bookId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Book book = booksContext.Books.Find(bookId);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "Id,Title,Author,OnShelf")] Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                booksContext.Entry(book).State = EntityState.Modified;
+                booksContext.SaveChanges();
+                return RedirectToAction("AllTheBooks");
+            }
+            return View(book);
         }
     }
 }

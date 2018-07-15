@@ -11,6 +11,7 @@
         <p>@Model[i].Author</p>
         <p>Book on Shelf: @Model[i].OnShelf</p>
         <p>ID : @Model[i].Id</p>
+        <h3>@Html.ActionLink("Edit", "Edit", new { BookId = Model[i].Id })</h3>
         <h3>@Html.ActionLink("Delete", "Delete", new { BookId = Model[i].Id })</h3>
 }
 
