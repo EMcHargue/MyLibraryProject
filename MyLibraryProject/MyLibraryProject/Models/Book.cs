@@ -15,5 +15,6 @@ namespace MyLibraryProject.Models
         public string Description { get; set; }
         //public int YearOfPublication { get; set; }
         public bool OnShelf { get; set; }
+        public int Rating { get; set; }
     }
 }

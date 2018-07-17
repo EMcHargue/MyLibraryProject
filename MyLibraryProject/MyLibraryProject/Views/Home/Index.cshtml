@@ -12,19 +12,36 @@
 <div class="row">
     <div class="col-md-8">
         <h2>Most Recent Book</h2>
-        <h3>
-            @Html.ActionLink(Model.OrderByDescending(i => i.Id).First().Title, "BookDetail", new { BookId = Model.OrderByDescending(i => i.Id).First().Id })
+        
+            @try {
+            <h3> @Html.ActionLink(Model.OrderByDescending(i => i.Id).First().Title, "BookDetail", new { BookId = Model.OrderByDescending(i => i.Id).First().Id }) </h3>
+            <p> @Model.OrderByDescending(i => i.Id).First().Author </p>
+            }
+            catch (InvalidOperationException e)
+            {
+            } 
+             
 
-        </h3>
-        <p>
-            @Model.OrderByDescending(i => i.Id).First().Author
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Top Ranked Books</h2>
-        <p></p>
-        <p></p>
+
+        @for (var y = 0; y < 3; y++)
+        {
+            try
+            {
+                var RatedBook = Model.OrderByDescending(i => i.Rating).ElementAt(y);
+
+                <h3>@Html.ActionLink(RatedBook.Title, "BookDetail", new { BookId = RatedBook.Id })</h3>
+                <p>@RatedBook.Author</p>
+                <p>@RatedBook.Rating/5</p>}
+            catch (ArgumentOutOfRangeException e)
+            {
+
+            }
+
+        }
+        
     </div>
 </div>
 
