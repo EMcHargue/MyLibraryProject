@@ -19,7 +19,6 @@ namespace MyLibraryProject.Data
         static BooksContext GetContext()
         {
             var context = new BooksContext();
-//            context.Database.Log = (message) => Debug.WriteLine(message);
             return context;
         }
 

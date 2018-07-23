@@ -14,6 +14,8 @@ namespace MyLibraryProject.Controllers
     {
         BooksContext booksContext = new BooksContext();
 
+        // Creates list of all books and returns list to Index
+
         public ActionResult Index()
         {
             List<Book> AllOfTheBooks = new List<Book>();
@@ -26,6 +28,8 @@ namespace MyLibraryProject.Controllers
             return View(AllOfTheBooks);
         }
 
+        // Creates list of all books and returns list to AllTheBooks
+
         public ActionResult AllTheBooks()
         {
             List<Book> AllOfTheBooks = new List<Book>();
@@ -37,6 +41,8 @@ namespace MyLibraryProject.Controllers
 
             return View(AllOfTheBooks);
         }
+
+        // Selects a book by ID and returns to BookDetail
 
         public ActionResult BookDetail(int? BookId)
         {
@@ -52,6 +58,8 @@ namespace MyLibraryProject.Controllers
             return View(book);
 
         }
+
+        // Methods to add a book
 
         public ActionResult Add()
         {
@@ -73,6 +81,8 @@ namespace MyLibraryProject.Controllers
 
             return View(book);
         }
+
+        // Methods to delete a book
 
         public ActionResult Delete(int? bookId)
         {
@@ -96,6 +106,8 @@ namespace MyLibraryProject.Controllers
             booksContext.SaveChanges();
             return RedirectToAction("AllTheBooks");
         }
+
+        // Methods to edit a book
 
         public ActionResult Edit(int? bookId)
         {
