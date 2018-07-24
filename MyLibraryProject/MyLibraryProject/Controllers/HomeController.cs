@@ -126,7 +126,7 @@ namespace MyLibraryProject.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Author,OnShelf")] Book book)
+        public ActionResult Edit(Book book)
         {
             if (ModelState.IsValid)
             {
