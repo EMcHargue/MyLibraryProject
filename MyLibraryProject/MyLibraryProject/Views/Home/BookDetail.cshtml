@@ -1,6 +1,6 @@
 ﻿@model MyLibraryProject.Models.Book
 
-@{ 
+@{
     ViewBag.Title = "BookDetail";
 }
 
@@ -11,12 +11,13 @@
 <p>Description:</p>
 <p>@Model.Description</p>
 
+
 <div>
     @using (Html.BeginForm())
     {
         <div class="form-actions no-color pt-4 ml-lg-5">
-            <a href="@Url.Action("AllTheBooks")" class="btn btn-warning btn-lg">
-                <span class="glyphicon glyphicon-remove"></span> Back to All the Books
+            <a href="@Url.Action("AllTheBooks")" class="btn btn-primary btn-lg">
+                Back to All the Books
             </a>
         </div>
     }
