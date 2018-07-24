@@ -13,6 +13,7 @@
     <div class="form-group">
         @Html.LabelFor(b => b.Title, new { @class = "control-label" })
         @Html.TextBoxFor(b => b.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">
@@ -26,7 +27,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(b => b.Rating, new { @class = "control-label" })
+        @Html.LabelFor(b => b.Rating, new { @class = "control-label" }) (Must be between 0 and 5)
         @Html.TextBoxFor(b => b.Rating, new { @class = "form-control" })
     </div>
 
@@ -41,10 +42,10 @@
     <div class="col-md-12">
         <div class="pad-top">
             <button type="submit" class="btn btn-success btn-lg margin-right">
-                <span class="glyphicon glyphicon-save"></span> Save
+                Save
             </button>
             <a href="@Url.Action("Index")" class="btn btn-warning btn-lg">
-                <span class="glyphicon glyphicon-remove"></span> Cancel
+                Cancel
             </a>
         </div>
     </div>
