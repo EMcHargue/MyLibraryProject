@@ -82,6 +82,8 @@ namespace MyLibraryProject.Controllers
             return View(book);
         }
 
+        // Compare authors and select author by Author.Id if it already exists
+
         // Methods to delete a book
 
         public ActionResult Delete(int? bookId)

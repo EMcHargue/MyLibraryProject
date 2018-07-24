@@ -16,9 +16,9 @@
             @*Lists most recent book added to database by listing book with highest Id*@
 
             @if(Model.Count > 0)
-            {
-            <h3> @Html.ActionLink(Model.OrderByDescending(i => i.Id).First().Title, "BookDetail", new { BookId = Model.OrderByDescending(i => i.Id).First().Id }) </h3>
-            <p> @Model.OrderByDescending(i => i.Id).First().Author </p>
+            { 
+                <h3> @Html.ActionLink(Model.OrderByDescending(i => i.Id).First().Title, "BookDetail", new { BookId = Model.OrderByDescending(i => i.Id).First().Id }) </h3>
+                <p> @Model.OrderByDescending(i => i.Id).First().Author.FirstName @Model.OrderByDescending(i => i.Id).First().Author.LastName </p>
             }
              
 
@@ -35,7 +35,7 @@
                 var RatedBook = Model.OrderByDescending(i => i.Rating).ElementAt(y);
 
                 <h3>@Html.ActionLink(RatedBook.Title, "BookDetail", new { BookId = RatedBook.Id })</h3>
-                <p>@RatedBook.Author</p>
+                <p>@RatedBook.Author.FirstName @RatedBook.Author.LastName</p>
                 <p>@RatedBook.Rating/5</p>}
             else
             {

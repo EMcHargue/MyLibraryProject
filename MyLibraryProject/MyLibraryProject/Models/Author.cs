@@ -7,7 +7,7 @@ namespace MyLibraryProject.Models
 {
     public class Author
     {
-        public string Name { get; set; }
-        public int DateOfBirth { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

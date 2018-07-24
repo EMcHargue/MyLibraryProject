@@ -16,7 +16,7 @@ namespace MyLibraryProject.Data
             var Book1 = new Book()
             {
                 Title = "Dune",
-                Author = "Frank Herbert",
+                Author = new Author() { FirstName = "Frank", LastName = "Herbert" },
                 OnShelf = true,
                 Rating = 4
             };
@@ -25,7 +25,7 @@ namespace MyLibraryProject.Data
             var Book2 = new Book()
             {
                 Title = "Pride and Prejudice",
-                Author = "Jane Austen",
+                Author = new Author () { FirstName = "Jane", LastName = "Austen" },
                 OnShelf = true,
                 Rating = 4
             };
@@ -34,13 +34,14 @@ namespace MyLibraryProject.Data
             var Book3 = new Book()
             {
                 Title = "The Other Boleyn Girl",
-                Author = "Philippa Gregory",
+                Author = new Author () { FirstName = "Philippa", LastName = "Gregory"},
                 OnShelf = false,
                 Rating = 1
             };
             context.Books.Add(Book3);
 
             context.SaveChanges();
+
         }
     }
 }

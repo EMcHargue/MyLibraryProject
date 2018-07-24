@@ -10,7 +10,7 @@
 @for (var i = 0; i < Model.Count; i++)
 {
     <h3> @Html.ActionLink(Model[i].Title, "BookDetail", new { BookId = Model[i].Id } ) </h3>
-        <p>@Model[i].Author</p>
+    <p>@Model[i].Author.FirstName @Model[i].Author.LastName</p>
         <p>Book on Shelf: @Model[i].OnShelf</p>
         <p>ID : @Model[i].Id</p>
         <h3>@Html.ActionLink("Edit", "Edit", new { BookId = Model[i].Id })</h3>
